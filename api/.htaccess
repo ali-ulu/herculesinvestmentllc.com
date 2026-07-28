@@ -1,0 +1,10 @@
+# public_html/api/.htaccess
+# config.php'nin tarayicidan okunmasini engeller.
+<Files "config.php">
+    Require all denied
+</Files>
+
+# .sql dosyalarini da disariya acma
+<FilesMatch "\.(sql|md|log)$">
+    Require all denied
+</FilesMatch>
