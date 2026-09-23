@@ -27,4 +27,8 @@ return [
 
     // Ayni IP'den art arda gonderim engeli (saniye)
     'throttle_seconds' => 30,
+
+    // IP'den bagimsiz genel sinir: son 1 saatte en fazla bu kadar mesaj.
+    // Dagitik spam'e karsi. Normal trafigin cok ustunde tut; 0 = kapali.
+    'hourly_limit' => 20,
 ];
