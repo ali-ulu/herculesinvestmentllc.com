@@ -1,5 +1,14 @@
 ---
+# Only the files the site needs are published. schema.sql, config.example.php,
+# deploy/ and anything added to the repo later stay out of public_html.
 deployment:
   tasks:
     - export DEPLOYPATH=/home/hercules/public_html/
-    - /bin/cp -R * $DEPLOYPATH
+    - /bin/mkdir -p ${DEPLOYPATH}api
+    - /bin/cp index.html ${DEPLOYPATH}
+    - /bin/cp api/contact.php api/.htaccess ${DEPLOYPATH}api/
+    # Root .htaccess: swap only our marked block, keep cPanel's own lines.
+    - /bin/touch ${DEPLOYPATH}.htaccess
+    - /bin/sed -i '/^# BEGIN hercules-security$/,/^# END hercules-security$/d' ${DEPLOYPATH}.htaccess
+    - /bin/cat deploy/root-htaccess-block.conf ${DEPLOYPATH}.htaccess > ${DEPLOYPATH}.htaccess.new
+    - /bin/mv ${DEPLOYPATH}.htaccess.new ${DEPLOYPATH}.htaccess

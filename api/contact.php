@@ -13,13 +13,17 @@ header('Content-Type: application/json; charset=utf-8');
 header('X-Content-Type-Options: nosniff');
 
 // --- config yukle ---
-$configPath = __DIR__ . '/config.php';                 // ayni klasorde ise
+// Once public_html DISINDAKI kopya denenir (/home/KULLANICI/private/config.php);
+// api/ icindeki kopya sadece gecis donemi icin.
+$configPath = dirname(__DIR__, 2) . '/private/config.php';
 if (!is_file($configPath)) {
-    $configPath = dirname(__DIR__, 2) . '/private/config.php';  // public_html disinda ise
+    $configPath = __DIR__ . '/config.php';
 }
 if (!is_file($configPath)) {
+    // Ayrinti sadece sunucu loguna; disariya genel hata.
+    error_log('[hercules-contact] config.php bulunamadi');
     http_response_code(500);
-    echo json_encode(['ok' => false, 'error' => 'config_missing']);
+    echo json_encode(['ok' => false, 'error' => 'server']);
     exit;
 }
 $cfg = require $configPath;
@@ -82,7 +86,10 @@ if ($errors) {
     exit;
 }
 
-$ip = $_SERVER['HTTP_CF_CONNECTING_IP'] ?? $_SERVER['REMOTE_ADDR'] ?? '';
+// Sadece REMOTE_ADDR: site Cloudflare arkasinda degil, CF-Connecting-IP /
+// X-Forwarded-For gibi basliklari istemci istedigi gibi yazabilir ve
+// throttle'i her istekte farkli sahte IP ile atlatir.
+$ip = (string)($_SERVER['REMOTE_ADDR'] ?? '');
 $ua = mb_substr((string)($_SERVER['HTTP_USER_AGENT'] ?? ''), 0, 255);
 
 // --- veritabani ---
@@ -113,6 +120,23 @@ if ($throttle > 0 && $ip !== '') {
     );
     $st->execute([$ip, $throttle]);
     if ((int)$st->fetch()['n'] > 0) {
+        http_response_code(429);
+        echo json_encode(['ok' => false, 'error' => 'too_many_requests']);
+        exit;
+    }
+}
+
+// --- genel sinir: IP'den bagimsiz, saatte en fazla N mesaj ---
+// IP basina throttle dagitik bir botu durdurmaz; bu sinir veritabanini ve
+// bildirim kutusunu korur. Asilirsa yeni mesaj reddedilir (429).
+$hourlyLimit = (int)($cfg['hourly_limit'] ?? 20);
+if ($hourlyLimit > 0) {
+    $st = $pdo->query(
+        'SELECT COUNT(*) AS n FROM contact_messages
+          WHERE created_at > (NOW() - INTERVAL 1 HOUR)'
+    );
+    if ((int)$st->fetch()['n'] >= $hourlyLimit) {
+        error_log('[hercules-contact] saatlik genel sinir asildi');
         http_response_code(429);
         echo json_encode(['ok' => false, 'error' => 'too_many_requests']);
         exit;
@@ -177,4 +201,5 @@ try {
     error_log('[hercules-contact] mail: ' . $e->getMessage());
 }
 
-echo json_encode(['ok' => true, 'id' => $id, 'mailed' => $sent]);
+// id ve mail durumu disariya verilmez: sirali id gelen mesaj sayisini ele verir.
+echo json_encode(['ok' => true]);
