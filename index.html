@@ -1291,7 +1291,7 @@ document.documentElement.dataset.theme=saved||(matchMedia('(prefers-color-scheme
 $('#themeBtn').addEventListener('click',()=>{
   const t=document.documentElement.dataset.theme==='dark'?'light':'dark';
   document.documentElement.dataset.theme=t;try{localStorage.setItem('hi-theme',t)}catch(e){}
-  if(window.net)net.recolor();
+  if(window.net&&window.net.recolor)window.net.recolor();
 });
 
 /* ================= CURSOR + GLOW ================= */
@@ -1328,7 +1328,7 @@ const wipe=$('#wipe');
 function setActiveNav(id){$$('.nav-links a').forEach(a=>a.classList.toggle('on',a.dataset.page===id));}
 function swap(id){pages.forEach(p=>p.classList.toggle('active',p.id==='page-'+id));current=id;setActiveNav(id);
   try{scrollTo({top:0,left:0,behavior:'instant'})}catch(e){scrollTo(0,0)}
-  if(id==='home'&&window.net)net.resize();}
+  if(id==='home'&&window.net&&window.net.resize)window.net.resize();}
 function go(id){
   if(!PAGES.includes(id))id='home';
   if(id===current){scrollTo({top:0,behavior:'smooth'});return;}
