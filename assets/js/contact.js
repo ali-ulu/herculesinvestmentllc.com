@@ -2,8 +2,7 @@
 'use strict';
 const FORM_ENDPOINT='/api/contact.php';
 const formOpened=Date.now();
-const ERRTXT={en:{net:'Could not send. Please try again or email us directly.',val:'Please check the highlighted fields.',rate:'Please wait a moment before sending again.'},
-              tr:{net:'Gönderilemedi. Tekrar deneyin veya doğrudan e-posta yazın.',val:'Lütfen işaretli alanları kontrol edin.',rate:'Tekrar göndermeden önce biraz bekleyin.'}};
+const ERRTXT={net:'Could not send. Please try again or email us directly.',val:'Please check the highlighted fields.',rate:'Please wait a moment before sending again.'};
 
 function fieldValue(form,name){
   const el=form.elements[name];
@@ -14,7 +13,7 @@ function fieldValue(form,name){
 
 function bindContactForm(form){
   const btn=$('button[type="submit"]',form),err=$('.form-err',form),ok=form.parentElement.querySelector('.form-ok');
-  const showError=kind=>{err.textContent=(ERRTXT[LANG]||ERRTXT.en)[kind];err.hidden=false;};
+  const showError=kind=>{err.textContent=ERRTXT[kind];err.hidden=false;};
   form.addEventListener('submit',async e=>{
     e.preventDefault();
     err.hidden=true;
@@ -27,7 +26,7 @@ function bindContactForm(form){
       message:fieldValue(form,'message'),
       website:form.elements.website?form.elements.website.value:'',
       elapsed:Date.now()-formOpened,
-      lang:LANG
+      lang:'en'
     };
     try{
       const r=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});

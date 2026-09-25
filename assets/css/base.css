@@ -20,7 +20,6 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:'Archivo','IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden;transition:background .5s,color .5s;-webkit-font-smoothing:antialiased}
-[dir="rtl"] body{font-family:'IBM Plex Sans Arabic','Archivo',sans-serif}
 body::before{content:'';position:fixed;inset:0;z-index:-2;background:radial-gradient(1100px 560px at 88% -8%,var(--glow),transparent 62%),radial-gradient(900px 520px at -8% 34%,rgba(19,49,87,.06),transparent 60%)}
 body::after{content:'';position:fixed;inset:0;z-index:-1;background-image:radial-gradient(var(--line2) 1px,transparent 1px);background-size:26px 26px;opacity:.55;pointer-events:none}
 ::selection{background:var(--gold);color:#0B1F3A}
@@ -30,7 +29,6 @@ a{text-decoration:none;color:inherit}
 button{font-family:inherit;background:none;border:none;color:inherit;cursor:pointer}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
 .display{font-family:'Fraunces',Georgia,serif}
-[dir="rtl"] .display{font-family:'IBM Plex Sans Arabic','Archivo',sans-serif;font-weight:700}
 .mono{font-family:'Spline Sans Mono',monospace}
 .wrap{max-width:1280px;margin-inline:auto;padding-inline:clamp(20px,4.5vw,56px);width:100%}
 .skip{position:absolute;left:-9999px;z-index:3000;background:var(--navy);color:#fff;padding:10px 18px;border-radius:8px}
@@ -45,5 +43,4 @@ button{font-family:inherit;background:none;border:none;color:inherit;cursor:poin
 html.has-cursor,html.has-cursor *{cursor:none}
 #glow{position:fixed;width:640px;height:640px;border-radius:50%;pointer-events:none;z-index:1;background:radial-gradient(circle,var(--glow),transparent 62%);transform:translate(-50%,-50%);left:50%;top:30%}
 #progress{position:fixed;top:0;left:0;height:3px;width:100%;background:linear-gradient(90deg,var(--gold2),var(--gold));transform:scaleX(0);transform-origin:left;z-index:1600}
-[dir="rtl"] #progress{transform-origin:right}
 

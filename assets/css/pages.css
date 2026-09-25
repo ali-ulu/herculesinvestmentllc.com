@@ -16,7 +16,6 @@
 .story-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;align-items:start}
 .story-text p{color:var(--ink2);line-height:1.9;margin-bottom:22px;font-size:1.02rem}
 .story-text p:first-child::first-letter{font:600 3.6rem/.8 'Fraunces';color:var(--gold-text);float:left;margin:8px 12px 0 0}
-[dir="rtl"] .story-text p:first-child::first-letter{float:right;margin:8px 0 0 12px}
 .timeline{position:relative;padding-inline-start:42px}
 .tl-line{position:absolute;inset-block:8px;inset-inline-start:6px;width:2px;background:linear-gradient(var(--gold),var(--line));transform:scaleY(0);transform-origin:top;transition:transform 1.8s var(--ease) .2s}
 .timeline.in .tl-line{transform:scaleY(1)}
@@ -62,7 +61,6 @@
 .srv-more{font:600 12px 'Archivo';color:var(--gold-text);display:inline-flex;gap:6px;align-items:center;white-space:nowrap}
 .srv-more svg{width:14px;height:14px;transition:transform .3s}
 .srv-card:hover .srv-more svg{transform:translateX(4px)}
-[dir="rtl"] .srv-card:hover .srv-more svg{transform:translateX(-4px) scaleX(-1)}
 .srv-card.feat{background:linear-gradient(135deg,#0B1F3A,#16386B);color:#EAF1FB;border-color:transparent}
 .srv-card.feat>p{color:#AFC2DC}
 .srv-card.feat .srv-idx{color:#fff;opacity:.1}
@@ -112,7 +110,7 @@
 .form-err{color:var(--down);margin-top:12px}
 .hp{position:absolute;left:-9999px;top:-9999px}
 .form-card h3{font:600 1.4rem 'Fraunces'}
-.form-card .sub{color:var(--muted);font-size:13px;margin-top:8px}
+
 .f-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px}
 .field{position:relative}
 .field.full{grid-column:1/-1}

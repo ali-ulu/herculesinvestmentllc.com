@@ -18,7 +18,6 @@
 .eyebrow::before{content:'';width:34px;height:1px;background:var(--gold);flex:none}
 .eyebrow.c{justify-content:center}.eyebrow.c::after{content:'';width:34px;height:1px;background:var(--gold)}
 .hero h1{font:600 clamp(2.7rem,5.4vw,4.5rem)/1.05 'Fraunces';letter-spacing:-.015em;margin-top:22px}
-[dir="rtl"] .hero h1{font-weight:700}
 .hl{position:relative;display:inline-block;font-style:italic;color:var(--gold-text);white-space:nowrap}
 .uline{position:absolute;left:0;right:0;bottom:-10px;width:100%;height:14px}
 .uline path{fill:none;stroke:var(--gold);stroke-width:3.4;stroke-linecap:round;stroke-dasharray:330;stroke-dashoffset:330}
@@ -89,9 +88,7 @@ h2.sec-title{font:600 clamp(1.9rem,3.4vw,2.8rem)/1.15 'Fraunces';margin-top:18px
 .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
 .proj-card{border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:transform .5s var(--ease),box-shadow .5s,border-color .5s}
 .proj-card:hover{transform:translateY(-10px);box-shadow:var(--shadow-lg);border-color:rgba(201,165,92,.55)}
-.pc-cover{aspect-ratio:16/9.4;position:relative;overflow:hidden}
-.pc-cover svg{position:absolute;inset:0;width:100%;height:100%;transition:transform .8s var(--ease)}
-.proj-card:hover .pc-cover svg{transform:scale(1.06)}
+
 .pc-body{padding:22px 24px 24px;display:flex;flex-direction:column;gap:11px;flex:1}
 .pc-tags{display:flex;gap:8px;flex-wrap:wrap}
 .chip{font:600 9.5px 'Spline Sans Mono';letter-spacing:.13em;text-transform:uppercase;padding:5px 10px;border-radius:4px}
@@ -100,8 +97,7 @@ h2.sec-title{font:600 clamp(1.9rem,3.4vw,2.8rem)/1.15 'Fraunces';margin-top:18px
 .chip.green{background:rgba(23,138,91,.13);color:var(--up)}
 .pc-name{font:600 1.35rem 'Fraunces'}
 .pc-desc{color:var(--muted);font-size:.92rem;line-height:1.68}
-.pc-meta{margin-top:auto;padding-top:15px;border-top:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;font:500 10.5px 'Spline Sans Mono';color:var(--muted);letter-spacing:.04em}
-.pc-meta b{color:var(--gold-text);font-weight:600}
+
 .pc-link{font:600 11px 'Spline Sans Mono';letter-spacing:.06em;color:var(--gold-text);width:fit-content}
 .pc-link:hover{text-decoration:underline;text-underline-offset:3px}
 .pc-soon{font:600 10px 'Spline Sans Mono';letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:4px 10px;width:fit-content}

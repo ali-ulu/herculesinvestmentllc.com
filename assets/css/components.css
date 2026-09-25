@@ -15,8 +15,3 @@ footer h5{font:600 10.5px 'Spline Sans Mono';letter-spacing:.28em;text-transform
 .ft-row a{color:#8CA0BC}.ft-row a:hover{color:var(--gold)}
 .ft-disc{font-size:10.5px;color:#5F7089;line-height:1.75;max-width:920px;margin-top:14px}
 
-.st i{width:6px;height:6px;border-radius:50%;background:#7FD6A4}
-
-.msg{max-width:84%;padding:11px 14px;border-radius:14px;font-size:13px;line-height:1.6;animation:msgIn .35s var(--ease)}
-@keyframes msgIn{from{opacity:0;transform:translateY(8px)}}
-
