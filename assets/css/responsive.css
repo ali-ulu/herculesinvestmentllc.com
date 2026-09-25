@@ -7,7 +7,7 @@
   .about-grid,.story-grid,.ct-grid{grid-template-columns:1fr;gap:48px}
   .srv-grid{grid-template-columns:1fr 1fr}
   .values-grid,.vm-grid{grid-template-columns:1fr 1fr}
-  .stats-grid{grid-template-columns:1fr 1fr;gap:28px}
+  
   .ft-grid{grid-template-columns:1fr 1fr}
   
   .ceo-panel{grid-template-columns:1fr}
@@ -17,7 +17,7 @@
 }
 
 @media(max-width:640px){
-  .srv-grid,.values-grid,.vm-grid,.stats-grid,.ft-grid{grid-template-columns:1fr}
+  .srv-grid,.values-grid,.vm-grid,.ft-grid{grid-template-columns:1fr}
   .pf-grid{grid-template-columns:1fr;grid-auto-rows:74px}
   .section{padding:84px 0}.page-head{padding:150px 0 54px}
 

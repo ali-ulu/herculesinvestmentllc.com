@@ -1,17 +1,8 @@
-/* Reveal, counters, hero network canvas. */
+/* Reveal and hero network canvas. */
 'use strict';
-/* ================= REVEAL + COUNTERS ================= */
+/* ================= REVEAL ================= */
 const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.14,rootMargin:'0px 0px -40px 0px'});
 $$('.rv').forEach(el=>io.observe(el));
-const cio=new IntersectionObserver(es=>{es.forEach(en=>{
-  if(!en.isIntersecting)return;cio.unobserve(en.target);
-  const el=en.target,to=parseFloat(el.dataset.to),dec=+(el.dataset.dec||0),pre=el.dataset.prefix||'',suf=el.dataset.suffix||'';
-  if(REDUCED){el.textContent=pre+to.toFixed(dec)+suf;return;}
-  const t0=performance.now(),dur=1800;
-  (function tick(t){const p=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-p,4);
-    el.textContent=pre+(to*e).toFixed(dec)+suf;if(p<1)requestAnimationFrame(tick);})(t0);
-});},{threshold:.5});
-$$('.count').forEach(el=>cio.observe(el));
 
 /* ================= HERO NETWORK CANVAS ================= */
 const net=(()=>{
