@@ -3,29 +3,27 @@
 @media(max-width:1080px){
   .nav-links{display:none}.burger{display:flex}
   .hero-in{grid-template-columns:1fr;gap:46px}.hero{padding-top:140px}
-  .hero-panel{max-width:470px}
-  .perf-grid,.about-grid,.story-grid,.ct-grid{grid-template-columns:1fr;gap:48px}
-  .srv-grid,.proj-grid,.ld-grid,.in-grid{grid-template-columns:1fr 1fr}
+  
+  .about-grid,.story-grid,.ct-grid{grid-template-columns:1fr;gap:48px}
+  .srv-grid{grid-template-columns:1fr 1fr}
   .values-grid,.vm-grid{grid-template-columns:1fr 1fr}
   .stats-grid{grid-template-columns:1fr 1fr;gap:28px}
   .ft-grid{grid-template-columns:1fr 1fr}
-  .feat-card{grid-template-columns:1fr}
+  
   .ceo-panel{grid-template-columns:1fr}
+  .mini-grid,.mini-grid.mini-4,.proj-grid{grid-template-columns:1fr 1fr}
   .proj-head{flex-direction:column;align-items:flex-start}
+  .inv-grid{grid-template-columns:1fr;gap:32px}
 }
-@media(max-width:760px){
-  #portalBtn span{display:none}
-  #portalBtn{padding:0;width:38px;height:38px;border-radius:50%}
-  #portalBtn svg{margin:0}
-}
+
 @media(max-width:640px){
-  .srv-grid,.proj-grid,.ld-grid,.in-grid,.values-grid,.vm-grid,.stats-grid,.ft-grid{grid-template-columns:1fr}
+  .srv-grid,.values-grid,.vm-grid,.stats-grid,.ft-grid{grid-template-columns:1fr}
   .pf-grid{grid-template-columns:1fr;grid-auto-rows:74px}
   .section{padding:84px 0}.page-head{padding:150px 0 54px}
-  .cta-panel{flex-direction:column;align-items:flex-start}
-  .tk-label{display:none}
-  .f-grid,.cal-times{grid-template-columns:1fr}
-  .t-card{padding:34px 24px 30px}
+
+  .f-grid{grid-template-columns:1fr}
+  .mini-grid,.mini-grid.mini-4,.proj-grid{grid-template-columns:1fr}
+  
   .hl{white-space:normal}
 }
 @media (prefers-reduced-motion:reduce){

@@ -1,4 +1,4 @@
-/* Reveal, counters, ticker, hero network canvas. */
+/* Reveal, counters, hero network canvas. */
 'use strict';
 /* ================= REVEAL + COUNTERS ================= */
 const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.14,rootMargin:'0px 0px -40px 0px'});
@@ -12,14 +12,6 @@ const cio=new IntersectionObserver(es=>{es.forEach(en=>{
     el.textContent=pre+(to*e).toFixed(dec)+suf;if(p<1)requestAnimationFrame(tick);})(t0);
 });},{threshold:.5});
 $$('.count').forEach(el=>cio.observe(el));
-
-/* ================= LIVE TICKER ================= */
-const TICKS=['HYDRELON','DR HERCULES','STORE OF PARADISE','HERCULES WHOLESALER','HERCULES ECOMMERCE'];
-function fmtV(v){return v<10?v.toFixed(4):v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
-function tkHTML(){return TICKS.map((t,i)=>'<span class="tk-item" data-i="'+i+'"><b class="tk-s">'+t+'</b></span>').join('');}
-const tkTrack=$('#tkTrack');
-tkTrack.innerHTML=tkHTML()+tkHTML();
-/* ticker sabit: sahte canlı veri kaldırıldı */
 
 /* ================= HERO NETWORK CANVAS ================= */
 const net=(()=>{

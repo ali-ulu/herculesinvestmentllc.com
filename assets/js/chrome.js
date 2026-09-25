@@ -22,22 +22,19 @@ if(FINE&&!REDUCED){
 }
 
 /* ================= SCROLL CHROME ================= */
-const nav=$('#nav'),prog=$('#progress'),toTop=$('#toTop');
+const nav=$('#nav'),prog=$('#progress');
 let sTick=false;
 function onScroll(){
   const y=scrollY,h=document.documentElement.scrollHeight-innerHeight;
   prog.style.transform='scaleX('+(h?y/h:0)+')';
   nav.classList.toggle('scrolled',y>10);
-  document.body.classList.toggle('hide-ticker',y>140);
-  toTop.classList.toggle('show',y>600);
   sTick=false;
 }
 addEventListener('scroll',()=>{if(!sTick){requestAnimationFrame(onScroll);sTick=true;}},{passive:true});
 onScroll();
-toTop.addEventListener('click',()=>scrollTo({top:0,behavior:REDUCED?'auto':'smooth'}));
 
 /* ================= ROUTER + PAGE TRANSITION ================= */
-const pages=$$('.page'),PAGES=['home','about','services','portfolio','leadership','insights','contact'];
+const pages=$$('.page'),PAGES=['home','about','services','portfolio','contact'];
 let current='home',animLock=false;
 const wipe=$('#wipe');
 function setActiveNav(id){$$('.nav-links a').forEach(a=>a.classList.toggle('on',a.dataset.page===id));}
